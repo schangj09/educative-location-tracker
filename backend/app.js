@@ -5,6 +5,7 @@ const cors = require('cors');
 
 // routers
 const authRouter = require('./routes/auth.router');
+const autcompleteRouter = require('./routes/autocomplete.router');
 
 const PORT = process.env.PORT || 8000;
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRouter);
+app.use('/autocomplete', autcompleteRouter);
 
 app.listen(PORT, () => {
   console.log('Server started on port', PORT);
