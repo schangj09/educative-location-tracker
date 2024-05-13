@@ -7,9 +7,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
     - name: Set up secret file
       env:
         JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
