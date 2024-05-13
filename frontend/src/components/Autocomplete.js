@@ -3,7 +3,7 @@ import { FaCircleInfo, FaLocationDot } from "react-icons/fa6";
 import { useState } from "react";
 import serverURL from "../utils/urls";
 
-export default function Autocomplete() {
+export default function Autocomplete({ onAddLocation }) {
   // state variables
   const [locations, setLocations] = useState([]); // array to store autocomplete suggestions
   const [locationInput, setLocationInput] = useState(""); // user input for location search
@@ -29,6 +29,13 @@ export default function Autocomplete() {
     setLocationInput(e.target.value);
     clearTimeout(inputTimer);
     setInputTimer(setTimeout(() => { autocomplete(e.target.value) }, 300));
+  };
+
+  // Handle add location
+  const handleAddLocation = (name, latitude, longitude) => {
+    onAddLocation(name, latitude, longitude);
+    setLocationInput(name);
+    setLocations([]);
   };
 
   return (
@@ -74,6 +81,13 @@ export default function Autocomplete() {
                     </div>
                     <div className="w-fit">
                       <button
+                        onClick={() => {
+                          handleAddLocation(
+                            location.formattedAddress,
+                            location.latitude,
+                            location.longitude,
+                          );
+                        }}
                         type="button"
                         className="primary-button  border-black dark:border-white"
                       >

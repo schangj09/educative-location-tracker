@@ -31,7 +31,7 @@ function Signup() {
   };
 
   // Handle add current location
-  const handleAddCurrentLocation = (name, longitude, latitude) => {
+  const handleAddCurrentLocation = (name, latitude, longitude) => {
     setUserDetails((prev) => ({ ...prev, currentLocation: { name, latitude, longitude }}));
   };
 
@@ -42,7 +42,7 @@ function Signup() {
     setInputError('');
 
     // Destructure user details
-    const { username, password, gender } = userDetails;
+    const { username, password, gender, currentLocation } = userDetails;
 
     // Validation checks
     if (!username.trim()) {
@@ -74,6 +74,7 @@ function Signup() {
         username,
         password,
         gender,
+        currentLocation,
       });
       // Display success message, reset state, and navigate to signin
       toast.success(response?.data?.message);
@@ -144,6 +145,12 @@ function Signup() {
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
+          </div>
+          <div className="flex flex-col">
+            <label>
+              Location
+            </label>
+            <Autocomplete onAddLocation={handleAddCurrentLocation} />
           </div>
           {
             loading
