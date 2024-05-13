@@ -12,8 +12,13 @@ import AppContext from "../utils/AppContext";
 export default function AddLocation() {
   useAuth();
   return (
-    <div className="text-black dark:text-white lg:p-10">
-      <div className="h-screen overflow-hidden left-0 fixed w-full">
+    <div>
+      <div className="h-screen  overflow-hidden left-0 fixed w-full">
+        <div className="fixed lg:absolute w-full mt-20  z-40 flex flex-col justify-center items-center">
+          <div className="w-[400px]">
+            <Autocomplete />
+          </div>
+        </div>
         <div className="absoulte top-0 h-full">
           <MapComponent />
         </div>
