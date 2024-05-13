@@ -44,7 +44,7 @@ export default function Profile() {
               <div className="flex flex-col">
                 <label className="">Current Location</label>
                 <p className=" p-2 border rounded text-slate-400">
-                  {/* Current location here */}
+                  {authUser?.currentLocation?.name}
                 </p>
               </div>
             </div>
