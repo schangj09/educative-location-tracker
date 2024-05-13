@@ -18,6 +18,7 @@ function Signup() {
     username: '',
     password: '',
     gender: '',
+    currentLocation: {}
   });
   const [signupError, setSignupError] = useState('');
   const [inputError, setInputError] = useState('');
@@ -27,6 +28,11 @@ function Signup() {
   const handleInputChange = (name, value) => {
     setInputError('');
     setUserDetails((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Handle add current location
+  const handleAddCurrentLocation = (name, longitude, latitude) => {
+    setUserDetails((prev) => ({ ...prev, currentLocation: { name, latitude, longitude }}));
   };
 
   // Handle signup submission
