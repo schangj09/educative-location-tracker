@@ -4,3 +4,7 @@ const {
 } = require('../controllers/location.controller');
 const { authMiddleware } = require('../middlewares/auth.middleware');
 const router = express.Router();
+
+router.post("/add", authMiddleware, addLocation);
+
+module.exports = router;
